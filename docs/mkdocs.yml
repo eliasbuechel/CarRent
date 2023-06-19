@@ -1,0 +1,5 @@
+site_name: CarRent - Elias Büchel
+theme:
+  name: material
+  features:
+    - navigation.tabs
