@@ -3,22 +3,27 @@
     using CarRent.CustomerManagement.Domain;
     using System;
     using System.Collections.Generic;
+    using Zbw.Carrent.CustomerManagement.Infrastructure.Persistence;
 
     public class CustomerRepository : ICustomerRepository
     {
         private readonly List<Customer> _customers;
+        private readonly CustomerContext _context;
 
-        public CustomerRepository()
+        public CustomerRepository(CustomerContext context)
         {
             _customers = new List<Customer>()
             {
                 new("C00001", "Hans"),
                 new("C00002", "Fritz")
             };
+
+            _context = context;
         }
 
         public void Add(Customer customer)
         {
+            _context.Add(customer);
             throw new NotImplementedException();
         }
 
