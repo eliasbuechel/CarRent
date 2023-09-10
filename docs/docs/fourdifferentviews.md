@@ -1,13 +1,11 @@
 # Verschiedene Views (4+1)
 
-## Logical View
+**Deployment View**
 
-## Deployment View
+<img src="/images/DeploymentDiagram.png" alt="Deployment Diagramm"/>
 
-## Process View
+**Logical View**
 
-## Implementation View
+Klassendiagram für die Veranschaulichung der Codestruktur:
 
-## Use Case
-
-<img src="/images/usecase.png" alt="Use Cases Diagramm"/>
+<img src="/images/Class Diagram.png" alt="Class Diagramm"/>

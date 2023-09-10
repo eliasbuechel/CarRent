@@ -1,1 +1,0 @@
-# Teststrategie / -planung Metrikdefinition

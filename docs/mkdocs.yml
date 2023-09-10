@@ -4,12 +4,9 @@ site_url: ""
 nav:
   - Home: index.md
   - C4 Pattern: c4Patter.md
-  - Use Cases / Requirements: useCases-Requirements.md
-  - Use Case Word Test: useCaseMarkdownVersion.md
-  - Domain Models and System Sequence Diagrams: domainModels.md
+  - Use Cases: UseCases.md
   - Verschiedene Views (4+1): fourdifferentviews.md
   - Qualitätsbaum für NFR: qualitätsbaum.md
-  - Teststrategie / -planung: testStrategie.md
-  - Metrikdefinition: metricdefinition.md
+  - Teststrategie / -planung: testStrategieUndMetrik.md
 
 theme: readthedocs
