@@ -1,5 +1,15 @@
-site_name: CarRent - Elias Büchel
-theme:
-  name: material
-  features:
-    - navigation.tabs
+site_name: Carrent Elias
+site_url: ""
+
+nav:
+  - Home: index.md
+  - C4 Pattern: c4Patter.md
+  - Use Cases / Requirements: useCases-Requirements.md
+  - Use Case Word Test: useCaseMarkdownVersion.md
+  - Domain Models and System Sequence Diagrams: domainModels.md
+  - Verschiedene Views (4+1): fourdifferentviews.md
+  - Qualitätsbaum für NFR: qualitätsbaum.md
+  - Teststrategie / -planung: testStrategie.md
+  - Metrikdefinition: metricdefinition.md
+
+theme: readthedocs
