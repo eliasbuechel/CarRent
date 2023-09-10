@@ -8,6 +8,6 @@ namespace Zbw.Carrent.Common.Infrastructure.Persistence
         TResponse Add(TRequest request);
         TResponse Update(Guid id, TRequest request);
         void Remove(TEntity entity);
-        void Remove(Guid entity);
+        void Remove(Guid id);
     }
 }
