@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zbw.Carrent.CarManagerment.Api.CarController">
+    <Position X="0.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAABAAAAAAAAACAEAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>CarManagerment\Api\CarController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repository" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Zbw.Carrent.CarManagerment.Domain.Car">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAIABCAA=</HashCode>
+      <FileName>CarManagerment\Domain\Car.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zbw.Carrent.CarManagerment.Infrastructure.Persistence.CarRepository" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAEAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CarManagerment\Infrastructure\Persistence\CarRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Zbw.Carrent.CustomerManagement.Api.CustomerController">
+    <Position X="2.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAABAAAAAAAAACAEAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>CustomerManagement\Api\CustomerController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_repository" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Zbw.Carrent.CustomerManagement.Domain.Customer">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAACQAAEBAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>CustomerManagement\Domain\Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zbw.Carrent.CustomerManagement.Infrastructure.Persistence.CustomerRepository" BaseTypeListCollapsed="true">
+    <Position X="6" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAIAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomerManagement\Infrastructure\Persistence\CustomerRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Zbw.Carrent.RentalContractManagement.Domain.RentalContract">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAQAAAAAAAAAABAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>RentalContractManagement\Domain\RentalContract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zbw.Carrent.RentalContractManagement.Infrastructure.Persistence.RentalContractRepository" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAIAgAAAAAAAAAA=</HashCode>
+      <FileName>RentalContractManagement\Infrastructure\Persistence\RentalContractRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Zbw.Carrent.ReservationManagement.Domain.Reservation">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAQAAAAAAAAAABAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>ReservationManagement\Domain\Reservation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zbw.Carrent.ReservationManagement.Infrastructure.Persistence.ReservationRepository" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAIAAAAAQAAAAAA=</HashCode>
+      <FileName>ReservationManagement\Infrastructure\Persistence\ReservationRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Zbw.Carrent.Common.Domain.Entity">
+    <Position X="0.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Domain\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zbw.Carrent.Common.Infrastructure.Persistence.BaseDbContext&lt;T&gt;">
+    <Position X="6.25" Y="14.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Infrastructure\Persistence\BaseDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zbw.Carrent.Common.Infrastructure.Persistence.BaseRepository&lt;TEntity, TRequest, TResponse&gt;">
+    <Position X="0.75" Y="14.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAYACAAAAAAAFABAAAAABAAAAAAAAAIAAgAAAAAAAAA=</HashCode>
+      <FileName>Common\Infrastructure\Persistence\BaseRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_context" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Zbw.Carrent.Common.Infrastructure.Persistence.CarRentDbContext">
+    <Position X="4.25" Y="14.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAACAQAAAAAAEAAAAAAAEAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Infrastructure\Persistence\CarRentDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Zbw.Carrent.CarManagerment.Domain.ICarRepository&lt;TRequest, TResponse&gt;">
+    <Position X="0.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>CarManagerment\Domain\ICarRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Zbw.Carrent.CustomerManagement.Domain.ICustomerRepository&lt;TRequest, TResponse&gt;">
+    <Position X="2.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>CustomerManagement\Domain\ICustomerRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Zbw.Carrent.RentalContractManagement.Domain.IRentalContractRepository&lt;TRequest, TResponse&gt;">
+    <Position X="4.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>RentalContractManagement\Domain\IRentalContractRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Zbw.Carrent.ReservationManagement.Domain.IReservationRepository&lt;TRequest, TResponse&gt;">
+    <Position X="7.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>ReservationManagement\Domain\IReservationRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Zbw.Carrent.Common.Infrastructure.Persistence.IBaseRepository&lt;TEntity, TRequest, TResponse&gt;">
+    <Position X="0.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Infrastructure\Persistence\IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
