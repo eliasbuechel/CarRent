@@ -1,8 +1,8 @@
-﻿using Zbw.Carrent.Common.Domain;
+﻿using Zbw.Carrent.Common.Infrastructure.Persistence;
 
 namespace Zbw.Carrent.CarManagerment.Domain
 {
-    public interface ICarRepository<TRequest, TResponse> : IBaseRepository<Car, TRequest, TResponse>
+    public interface ICarRepository<in TRequest, out TResponse> : IBaseRepository<Car, TRequest, TResponse>
     {
         IEnumerable<TResponse> GetAll();
     }

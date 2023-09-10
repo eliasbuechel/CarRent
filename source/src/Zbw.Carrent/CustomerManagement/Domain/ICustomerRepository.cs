@@ -1,10 +1,8 @@
-﻿using Azure;
-using Zbw.Carrent.Common.Domain;
-using Zbw.Carrent.CustomerManagement.Api.Models;
+﻿using Zbw.Carrent.Common.Infrastructure.Persistence;
 
 namespace Zbw.Carrent.CustomerManagement.Domain
 {
-    public interface ICustomerRepository<TRequest, TResponse> : IBaseRepository<Customer, TRequest, TResponse>
+    public interface ICustomerRepository<in TRequest, out TResponse> : IBaseRepository<Customer, TRequest, TResponse>
     {
         IEnumerable<TResponse>GetAll();
     }

@@ -6,7 +6,7 @@ namespace Zbw.Carrent.Common.Infrastructure.Persistence
 {
     public abstract class BaseRepository<TEntity, TRequest, TResponse> : IBaseRepository<TEntity, TRequest, TResponse> where TEntity : Entity
     {
-        public BaseRepository(CarRentDbContext context)
+        protected BaseRepository(CarRentDbContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace Zbw.Carrent.Common.Infrastructure.Persistence
                 .Where(x => x.Id == id)
                 .Select(ResponseConverter())
                 .FirstOrDefault()
-                ?? throw new Exception();
+                ?? throw new ArgumentException("Id is not available in the database!");
         }
         public void Remove(TEntity entity)
         {
