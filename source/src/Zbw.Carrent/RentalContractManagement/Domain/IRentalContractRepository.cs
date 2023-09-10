@@ -2,7 +2,8 @@
 
 namespace Zbw.Carrent.RentalContractManagement.Domain
 {
-    public interface IRentalContractRepository : IBaseRepository<RentalContract>
+    public interface IRentalContractRepository<TRequest, TResponse> : IBaseRepository<RentalContract, TRequest, TResponse>
     {
+        IEnumerable<TResponse> GetAll();
     }
 }

@@ -2,7 +2,8 @@
 
 namespace Zbw.Carrent.ReservationManagement.Domain
 {
-    public interface IReservationRepository : IBaseRepository<Reservation>
+    public interface IReservationRepository<TRequest, TResponse> : IBaseRepository<Reservation, TRequest, TResponse>
     {
+        IEnumerable<TResponse> GetAll();
     }
 }

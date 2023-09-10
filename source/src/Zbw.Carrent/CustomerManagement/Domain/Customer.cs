@@ -9,10 +9,9 @@ namespace Zbw.Carrent.CustomerManagement.Domain
 
         }
 
-        public Customer(Guid id, string customerNr, string name, string street, string houseNumber, string postalcode, string city)
-            : base(id)
+        public Customer(string customerNr, string name, string street, string houseNumber, string postalcode, string city)
+            : base(Guid.NewGuid())
         {
-            Id = Guid.NewGuid();
             CustomerNr = customerNr;
             Name = name;
             Street = street;
@@ -21,11 +20,22 @@ namespace Zbw.Carrent.CustomerManagement.Domain
             City = city;
         }
 
-        public string CustomerNr { get; set; }
-        public string Name { get; set; }
-        public string Street { get; set; }
-        public string HouseNumber { get; set; }
-        public string Postalcode { get; set; }
-        public string City { get; set; }
+        public Customer(Guid id, string customerNr, string name, string street, string houseNumber, string postalcode, string city)
+            : base(id)
+        {
+            CustomerNr = customerNr;
+            Name = name;
+            Street = street;
+            HouseNumber = houseNumber;
+            Postalcode = postalcode;
+            City = city;
+        }
+
+        public string CustomerNr { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Street { get; set; } = string.Empty;
+        public string HouseNumber { get; set; } = string.Empty;
+        public string Postalcode { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
     }
 }

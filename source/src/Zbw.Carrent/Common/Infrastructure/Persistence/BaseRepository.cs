@@ -1,52 +1,84 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using Zbw.Carrent.Common.Domain;
 
 namespace Zbw.Carrent.Common.Infrastructure.Persistence
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : Entity
+    public abstract class BaseRepository<TEntity, TRequest, TResponse> : IBaseRepository<TEntity, TRequest, TResponse> where TEntity : Entity
     {
-
         public BaseRepository(CarRentDbContext context)
         {
             _context = context;
         }
 
-        public void Add(T entity)
+        public TResponse Add(TRequest request)
         {
-            _context.Set<T>().Add(entity);
+            TEntity entity = RequestConverter()(Guid.NewGuid(), request);
+
+            _context.Set<TEntity>().Add(entity);
             _context.SaveChanges();
+
+            return ResponseConverter()(entity);
         }
-        public T Get(Guid id)
+        public TResponse Get(Guid id)
         {
-            return _context.Set<T>()
+            return _context.Set<TEntity>()
                 .Where(x => x.Id == id)
+                .Select(ResponseConverter())
                 .FirstOrDefault()
                 ?? throw new Exception();
         }
-        public IEnumerable<T> GetAll()
+        public void Remove(TEntity entity)
         {
-            return _context.Set<T>().ToList();
-        }
-        public void Remove(T entity)
-        {
-            _context.Set<T>()
+            _context.Set<TEntity>()
                 .Remove(entity);
 
             _context.SaveChanges();
         }
         public void Remove(Guid id)
         {
-            _context.Set<T>()
+            _context.Set<TEntity>()
                 .Where(x => x.Id == id)
                 .ExecuteDelete();
 
             _context.SaveChanges();
         }
-
-        public void Update(T entity)
+        public TResponse Update(Guid id, TRequest request)
         {
-            _context.Set<T>().Update(entity);
+            var requestConverter = RequestConverter();
+            TEntity entity = requestConverter(id, request);
+
+            _context.Set<TEntity>().Update(entity);
             _context.SaveChanges();
+
+            var responseConverter = ResponseConverter();
+            return responseConverter(entity);
+        }
+
+        protected IEnumerable<TResponse> GetAll()
+        {
+            return _context
+                .Set<TEntity>()
+                .Select(ResponseConverterSelector())
+                .ToList();
+        }
+        protected IEnumerable<TResponse> GetAll<TProperty1, TProperty2>(Expression<Func<TEntity, TProperty1>> navigationPropertyPath1, Expression<Func<TEntity, TProperty2>> navigationPropertyPath2)
+        {
+            return _context
+                .Set<TEntity>()
+                .Include(navigationPropertyPath1)
+                .Include(navigationPropertyPath2)
+                .Select(ResponseConverterSelector())
+                .ToList();
+        }
+
+        protected abstract Func<TEntity, TResponse> ResponseConverter();
+        protected abstract Func<Guid, TRequest, TEntity> RequestConverter();
+
+        private Expression<Func<TEntity, TResponse>> ResponseConverterSelector()
+        {
+            var responseConverter = ResponseConverter();
+            return x => responseConverter(x);
         }
 
         protected readonly CarRentDbContext _context;

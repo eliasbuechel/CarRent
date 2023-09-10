@@ -1,12 +1,13 @@
-﻿namespace Zbw.Carrent.Common.Domain
+﻿using System.Linq.Expressions;
+
+namespace Zbw.Carrent.Common.Domain
 {
-    public interface IBaseRepository<T> where T : Entity
+    public interface IBaseRepository<TEntity, TRequest, TResponse> where TEntity : Entity
     {
-        IEnumerable<T> GetAll();
-        T Get(Guid id);
-        void Add(T entity);
-        void Update(T entity);
-        void Remove(T entity);
+        TResponse Get(Guid id);
+        TResponse Add(TRequest request);
+        TResponse Update(Guid id, TRequest request);
+        void Remove(TEntity entity);
         void Remove(Guid entity);
     }
 }

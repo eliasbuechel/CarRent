@@ -1,15 +1,14 @@
-﻿namespace Zbw.Carrent.CustomerManagement.Api
+﻿using Microsoft.AspNetCore.Mvc;
+using Zbw.Carrent.CustomerManagement.Api.Models;
+using Zbw.Carrent.CustomerManagement.Domain;
+
+namespace Zbw.Carrent.CustomerManagement.Api
 {
-    using Microsoft.AspNetCore.Mvc;
-
-    using Zbw.Carrent.CustomerManagement.Api.Models;
-    using Zbw.Carrent.CustomerManagement.Domain;
-
     [Route("api/customers")]
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        public CustomerController(ICustomerRepository repository)
+        public CustomerController(ICustomerRepository<CustomerRequest, CustomerResponse> repository)
         {
             ArgumentNullException.ThrowIfNull(repository);
             _repository = repository;
@@ -18,41 +17,29 @@
         [HttpGet]
         public IEnumerable<CustomerResponse> Get()
         {
-            var customers = _repository.GetAll();
-            return customers.Select(c => ConvertToCustomerResponse(c));
+            IEnumerable<CustomerResponse> customers = _repository.GetAll();
+            return customers;
         }
 
         [HttpGet("{id}")]
         public CustomerResponse Get(Guid id)
         {
-            var customer = _repository.Get(id);
-            return ConvertToCustomerResponse(customer);
+            CustomerResponse response = _repository.Get(id);
+            return response;
         }
 
         [HttpPost]
-        public CustomerResponse Post([FromBody] CustomerRequest customer)
+        public CustomerResponse Post([FromBody] CustomerRequest request)
         {
-            var c = new Customer(
-                Guid.NewGuid(),
-                customer.CustomerNr,
-                customer.Name,
-                customer.Street,
-                customer.HouseNumber,
-                customer.Postalcode,
-                customer.City
-                );
-            
-            _repository.Add(c);
-
-            return ConvertToCustomerResponse(c);
+            CustomerResponse response = _repository.Add(request);
+            return response;
         }
 
         [HttpPut("{id}")]
         public CustomerResponse Put(Guid id, [FromBody] CustomerRequest request)
         {
-            Customer c = ConvertToCustomer(request);
-            _repository.Update(c);
-            return ConvertToCustomerResponse(c);
+            CustomerResponse updatedCusomter = _repository.Update(id, request);
+            return updatedCusomter;
         }
 
         [HttpDelete("{id}")]
@@ -61,16 +48,6 @@
             _repository.Remove(id);
         }
 
-
-        private static Customer ConvertToCustomer(CustomerRequest customer)
-        {
-            return new Customer(Guid.NewGuid(), customer.CustomerNr, customer.Name, customer.Street, customer.HouseNumber, customer.Postalcode, customer.City);
-        }
-        private static CustomerResponse ConvertToCustomerResponse(Customer customer)
-        {
-            return new CustomerResponse(customer.Id, customer.CustomerNr, customer.Name, customer.Street, customer.HouseNumber, customer.Postalcode, customer.City);
-        }
-
-        private readonly ICustomerRepository _repository;
+        private readonly ICustomerRepository<CustomerRequest, CustomerResponse> _repository;
     }
 }

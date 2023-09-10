@@ -1,5 +1,5 @@
-﻿using Zbw.Carrent.CarManagerment.Domain;
-using Zbw.Carrent.CustomerManagement.Domain;
+﻿using Zbw.Carrent.CarManagerment.Api.Models;
+using Zbw.Carrent.CustomerManagement.Api.Models;
 
 namespace Zbw.Carrent.RentalContractManagement.Api.Models
 {
@@ -7,7 +7,7 @@ namespace Zbw.Carrent.RentalContractManagement.Api.Models
         Guid Id,
         int DurationInDays,
         decimal Cost,
-        Customer Customer,
-        Car Car
+        CustomerResponse Customer,
+        CarResponse Car
     );
 }

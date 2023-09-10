@@ -1,7 +1,6 @@
 ﻿namespace Zbw.Carrent.CarManagerment.Api.Models
 {
     public record CarRequest(
-            Guid Id,
         string Name,
         string Brand,
         string Type,

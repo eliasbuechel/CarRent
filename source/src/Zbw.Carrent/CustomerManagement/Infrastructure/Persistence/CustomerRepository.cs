@@ -1,23 +1,27 @@
-﻿namespace Zbw.Carrent.CustomerManagement.Infrastructure.Persistence
-{
-    using System;
-    using System.Collections.Generic;
-    using Zbw.Carrent.Common.Infrastructure.Persistence;
-    using Zbw.Carrent.CustomerManagement.Domain;
+﻿using Zbw.Carrent.Common.Infrastructure.Persistence;
+using Zbw.Carrent.CustomerManagement.Api.Models;
+using Zbw.Carrent.CustomerManagement.Domain;
 
-    public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
+namespace Zbw.Carrent.CustomerManagement.Infrastructure.Persistence
+{
+    public class CustomerRepository : BaseRepository<Customer, CustomerRequest, CustomerResponse>, ICustomerRepository<CustomerRequest, CustomerResponse>
     {
         public CustomerRepository(CarRentDbContext context)
-            : base(context)
-        {
-            _customers = new List<Customer>()
-            {
-                //new("C00001", "Hans"),
-                //new("C00002", "Fritz")
-            };
+        : base(context)
+        {}
 
+        IEnumerable<CustomerResponse> ICustomerRepository<CustomerRequest, CustomerResponse>.GetAll()
+        {
+            return base.GetAll();
         }
 
-        private readonly List<Customer> _customers;
+        protected override Func<Guid, CustomerRequest, Customer> RequestConverter()
+        {
+            return (Guid id, CustomerRequest request) => new Customer(id, request.CustomerNr, request.Name, request.Street, request.HouseNumber, request.Postalcode, request.City);
+        }
+        protected override Func<Customer, CustomerResponse> ResponseConverter()
+        {
+            return c => new CustomerResponse(c.Id, c.CustomerNr, c.Name, c.Street, c.HouseNumber, c.Postalcode, c.City);
+        }
     }
 }

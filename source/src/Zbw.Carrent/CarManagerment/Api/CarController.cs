@@ -8,7 +8,7 @@ namespace Zbw.Carrent.CarManagerment.Api
     [ApiController]
     public class CarController : ControllerBase
     {
-        public CarController(ICarRepository repository)
+        public CarController(ICarRepository<CarRequest, CarResponse> repository)
         {
             ArgumentNullException.ThrowIfNull(repository);
             _repository = repository;
@@ -17,31 +17,29 @@ namespace Zbw.Carrent.CarManagerment.Api
         [HttpGet]
         public IEnumerable<CarResponse> Get()
         {
-            var customers = _repository.GetAll();
-            return customers.Select(c => ConvertToCarResponse(c));
+            IEnumerable<CarResponse> carResponses = _repository.GetAll();
+            return carResponses;
         }
 
         [HttpGet("{id}")]
         public CarResponse Get(Guid id)
         {
-            var customer = _repository.Get(id);
-            return ConvertToCarResponse(customer);
+            CarResponse customerResponse = _repository.Get(id);
+            return customerResponse;
         }
 
         [HttpPost]
-        public CarResponse Post([FromBody] CarRequest car)
+        public CarResponse Post([FromBody] CarRequest request)
         {
-            var c = ConvertToCar(car);
-            _repository.Add(c);
-            return ConvertToCarResponse(c);
+            CarResponse response = _repository.Add(request);
+            return response;
         }
 
         [HttpPut("{id}")]
         public CarResponse Put(Guid id, [FromBody] CarRequest request)
         {
-            Car c = ConvertToCar(request);
-            _repository.Update(c);
-            return ConvertToCarResponse(c);
+            CarResponse response = _repository.Update(id, request);
+            return response;
         }
 
         [HttpDelete("{id}")]
@@ -50,29 +48,6 @@ namespace Zbw.Carrent.CarManagerment.Api
             _repository.Remove(id);
         }
 
-        private static Car ConvertToCar(CarRequest car)
-        {
-            return new Car(
-                Guid.NewGuid(),
-                car.Name,
-                car.Brand,
-                car.Type,
-                car.Category,
-                car.DalyFee
-                );
-        }
-        private static CarResponse ConvertToCarResponse(Car car)
-        {
-            return new CarResponse(
-                car.Id,
-                car.Name,
-                car.Brand,
-                car.Type,
-                car.Category,
-                car.DalyFee
-                );
-        }
-
-        private readonly ICarRepository _repository;
+        private readonly ICarRepository<CarRequest, CarResponse> _repository;
     }
 }
