@@ -9,4 +9,5 @@ nav:
   - Qualitätsbaum für NFR: qualitätsbaum.md
   - Teststrategie / -planung: testStrategieUndMetrik.md
 
-theme: readthedocs
+theme:
+  name: material
